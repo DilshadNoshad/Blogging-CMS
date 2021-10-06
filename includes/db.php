@@ -13,8 +13,9 @@ $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 if(!$connection){
     die("Database broken not connected" . mysqli_error());
-}else{
-    echo "Database Connected Sucessfully";
 }
+// else{
+//     echo "Database Connected Sucessfully";
+// }
 
 ?>
