@@ -1,8 +1,8 @@
     <!-- Header -->
-    <?php include 'includes/header.php' ?>
+    <?php include 'includes/admin_header.php' ?>
 
     <!-- /#navigation -->
-    <?php include 'includes/navigation.php' ?>
+    <?php include 'includes/admin_navigation.php' ?>
 
     <!-- Content -->
 <div id="page-wrapper">
@@ -36,4 +36,4 @@
 
 </div>
     <!-- footer -->
-    <?php include 'includes/footer.php' ?>
+    <?php include 'includes/admin_footer.php' ?>
