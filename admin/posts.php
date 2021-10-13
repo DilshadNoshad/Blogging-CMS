@@ -24,8 +24,8 @@ if(isset($_GET['source'])){
 }
 
 switch($source){
-    case '34':
-    echo "nice its 34";
+    case 'add_posts':
+        include 'includes/add_posts.php';
     break;
 
     case '100':
