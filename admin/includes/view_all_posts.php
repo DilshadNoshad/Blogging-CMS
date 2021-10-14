@@ -37,7 +37,18 @@ echo "<td><img width='100' src='../img/{$post_image}' alt='image'></td>";
 echo "<td>{$post_tags}</td>";
 echo "<td>{$post_comment_count}</td>";
 echo "<td>{$post_date}</td>";
+echo "<td><a href='posts.php?delete={$post_id}'>Delete</td>";
 echo "</tr>";
+}
+?>
+<?php
+if(isset($_GET['delete'])){
+    $delete_id = $_GET['delete'];
+
+    $query = "DELETE FROM posts ";
+    $query .= "WHERE post_id = $delete_id ";
+
+    $delete_selected_post_id = mysqli_query($connection, $query);
 }
 ?>
                     <tr>

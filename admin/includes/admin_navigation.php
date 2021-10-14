@@ -131,7 +131,7 @@
                         <a href="./posts.php">View All Posts</a>
                     </li>
                     <li>
-                        <a href="#">Dropdown Item</a>
+                        <a href="posts.php?source=add_posts">Add Posts</a>
                     </li>
                 </ul>
             </li>
