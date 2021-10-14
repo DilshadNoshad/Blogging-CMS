@@ -1,5 +1,12 @@
 <?php
 
+function confirm_query($result){
+    global $connection;
+    if(!$result){
+        die("Query Failed" . mysqli_error($connection));
+    }
+}
+
 function insert_categories(){
 
         global $connection;
