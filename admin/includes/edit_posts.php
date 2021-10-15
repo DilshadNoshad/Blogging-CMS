@@ -33,6 +33,8 @@ $post_date = $row['post_date'];
 $query = "SELECT * FROM categories";
 $fetch_all_categories = mysqli_query($connection, $query);
 
+confirm_query($fetch_all_categories);
+
 while($row = mysqli_fetch_assoc($fetch_all_categories)){
 $cat_id = $row['cat_id'];
 $cat_title = $row['cat_title']; 
