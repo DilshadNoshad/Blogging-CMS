@@ -37,6 +37,7 @@ echo "<td><img width='100' src='../img/{$post_image}' alt='image'></td>";
 echo "<td>{$post_tags}</td>";
 echo "<td>{$post_comment_count}</td>";
 echo "<td>{$post_date}</td>";
+echo "<td><a href='posts.php?source=edit_posts&p-id={$post_id}'>edit</td>";
 echo "<td><a href='posts.php?delete={$post_id}'>Delete</td>";
 echo "</tr>";
 }
@@ -51,16 +52,5 @@ if(isset($_GET['delete'])){
     $delete_selected_post_id = mysqli_query($connection, $query);
 }
 ?>
-                    <tr>
-                    <td>10</td>
-                    <td>Edwin Diaz</td>
-                    <td>Boostrap Framework</td>
-                    <td>Category</td>
-                    <td>Status</td>
-                    <td>Image</td>
-                    <td>Tags</td>
-                    <td>Comments</td>
-                    <td>Date</td>
-                    </tr>
                 </tbody>
             </table>
