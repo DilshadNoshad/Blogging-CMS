@@ -19,6 +19,46 @@ $post_comment_count = $row['post_comment_count'];
 $post_date = $row['post_date'];
 }
 }
+
+if(isset($_POST['update_post'])){
+    $post_title =  $_POST['title'];
+    $post_author =  $_POST['author'];
+    $post_category_id =  $_POST['post_category'];
+    $post_status =  $_POST['post_status'];
+
+    $post_image = $_FILES['post_image']['name'];
+    $post_image_temp = $_FILES['post_image']['tmp_name'];
+
+    $post_tags =  $_POST['post_tags'];
+    $post_content =  $_POST['post_content'];
+
+    if(empty($post_image)){
+
+        $query = "SELECT * FROM posts WHERE post_id = $select_edit_post";
+        $selected_image_show = mysqli_query($connection, $query);
+
+    while($row = mysqli_fetch_assoc($selected_image_show)){
+        $post_image = $row['post_image'];
+    }
+    }
+    move_uploaded_file($post_image_temp, "../img/$post_image");
+
+    $query = "UPDATE posts SET ";
+    $query .= "post_title = '{$post_title}', ";
+    $query .= "post_author = '{$post_author}', ";
+    $query .= "post_category_id = '{$post_category_id}', ";
+    $query .= "post_date = now(), ";
+    $query .= "post_status = '{$post_status}', ";
+    $query .= "post_image = '{$post_image}', ";
+    $query .= "post_tags = '{$post_tags}', ";
+    $query .= "post_content = '{$post_content},' ";
+    $query .= "WHERE post_id = '{$select_edit_post}' ";
+
+    $update_selected_posts = mysqli_query($connection, $query);
+
+    confirm_query($update_selected_posts);
+
+}
 ?>
 <form action="" method="post" enctype="multipart/form-data">
 
@@ -28,7 +68,7 @@ $post_date = $row['post_date'];
     </div>
 
     <div class="form-group">
-        <select class="form-select" name="post_category_id" id="">
+        <select class="form-select" name="post_category" id="">
 <?php
 $query = "SELECT * FROM categories";
 $fetch_all_categories = mysqli_query($connection, $query);
@@ -45,6 +85,8 @@ echo "<option value='{$cat_id}'>{$cat_title}</option>";
         </select>
     </div>
 
+
+
     <div class="form-group">
         <label for="author">Post Author</label>
         <input value="<?php echo $post_author ?>" type="text" class="form-control" name="author">
@@ -60,6 +102,10 @@ echo "<option value='{$cat_id}'>{$cat_title}</option>";
     </div>
 
     <div class="form-group">
+        <input type="file" name="post_image">
+    </div>
+    
+    <div class="form-group">
         <label for="post_tags">Post Tags</label>
         <input value="<?php echo $post_tags ?>" type="text" class="form-control" name="post_tags">
     </div>
@@ -70,7 +116,7 @@ echo "<option value='{$cat_id}'>{$cat_title}</option>";
     </div>
 
     <div class="form-group">
-        <input type="submit" class="btn btn-primary" name="create_post"
+        <input type="submit" class="btn btn-primary" name="update_post"
         value="Update post">
     </div>
 
