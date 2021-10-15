@@ -1,9 +1,9 @@
 <?php
 
 if(isset($_GET['p-id'])){
-    $select_edit_post = $_GET['p-id'];
+$select_edit_post = $_GET['p-id'];
 
-$query = 'SELECT * FROM posts';
+$query = "SELECT * FROM posts WHERE post_id = {$select_edit_post}";
 $select_all_posts = mysqli_query($connection, $query);
 
 while($row = mysqli_fetch_assoc($select_all_posts)){
@@ -71,7 +71,7 @@ echo "<option value='{$cat_id}'>{$cat_title}</option>";
 
     <div class="form-group">
         <input type="submit" class="btn btn-primary" name="create_post"
-        value="publish post">
+        value="Update post">
     </div>
 
 </form>
